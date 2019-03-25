@@ -1,8 +1,14 @@
 import React from 'react';
-import {createStackNavigator, createSwitchNavigator, createAppContainer} from 'react-navigation';
+import {Text} from 'react-native';
+import {
+    createStackNavigator,
+    createSwitchNavigator,
+    createAppContainer,
+} from 'react-navigation';
 import WelcomePage from '../page/WelcomePage';
 import HomePage from '../page/HomePage';
 import DetailPage from '../page/DetailPage';
+
 
 const InitNavigator = createStackNavigator({
     WelcomePage: {
@@ -19,17 +25,11 @@ const MainNavigator = createStackNavigator({
             header: null,
         }
     },
-    DetailPage: {
-        screen: DetailPage,
-        navigationOptions: {}
-    }
+    DetailPage: DetailPage
 });
 
-export default createSwitchNavigator({
+
+export default createAppContainer(createSwitchNavigator({
     Init: InitNavigator,
     Main: MainNavigator,
-}, {
-    navigationOptions: {
-        header: null,
-    }
-});
+}));
