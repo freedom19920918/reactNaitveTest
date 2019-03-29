@@ -1,12 +1,25 @@
 import React, {Component} from 'react';
-import {Text, View, StyleSheet} from 'react-native';
+import {Button, View, StyleSheet} from 'react-native';
+import {connect} from 'react-redux';
+import actions from '../action';
 
+const mapStateToProps = (state, ownProps) => ({});
+const mapDispatchToProps = (dispatch) => ({
+    onThemeChange: theme => dispatch(actions.onThemeChange(theme))
+});
+
+@connect(mapStateToProps, mapDispatchToProps)
 export default class FavoritePage extends Component {
 
     render() {
         return (
             <View style={styles.container}>
-                <Text> FavoritePage</Text>
+                <Button
+                    title="改变主题色(green)"
+                    onPress={() => {
+                        this.props.onThemeChange('green');
+                    }}
+                />
             </View>
         )
     }
