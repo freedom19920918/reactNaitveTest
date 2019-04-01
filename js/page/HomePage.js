@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
-import {Text, View} from 'react-native';
-import {createBottomTabNavigator, createAppContainer} from 'react-navigation';
+import {BackHandler} from 'react-native';
+import {createBottomTabNavigator, createAppContainer,NavigationActions} from 'react-navigation';
 import {connect} from 'react-redux';
 import {BottomTabBar} from 'react-navigation-tabs';
 import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
@@ -49,12 +49,32 @@ const TABS = {
 
 const mapStateToProps = (state, ownProps) => {
     return {
+        nav: state.nav,
         theme: state.theme.theme,
     }
 };
 
 @connect(mapStateToProps)
 export default class HomePage extends Component {
+    componentDidMount(): void {
+        BackHandler.addEventListener('hardwareBackPress', this.onBackPress);
+    }
+
+    componentWillUnmount(): void {
+        BackHandler.removeEventListener('hardwareBackPress', this.onBackPress);
+    }
+
+    onBackPress = () => {
+        const {dispatch, nav} = this.props;
+        console.log('nav',nav)
+        if (nav.routes[1].index === 0) {//如果是main路由中的第一个页面，则什么也不做
+            return false;
+        } else {
+            dispatch(NavigationActions.back());
+            return true;
+        }
+    };
+
     _renderBottomTabHandler = () => {
         if (this.tabs) {
             return this.tabs;

@@ -10,7 +10,7 @@ export default function onAction(state = defaultState, action) {
             return {
                 ...state,
                 theme: action.theme
-            }
+            };
         default:
             return state;
     }

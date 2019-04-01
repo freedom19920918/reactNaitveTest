@@ -1,3 +1,4 @@
 export default {
     THEME_CHANGE:'THEME_CHANGE',
+    POPULAR_REFRESH:'POPULAR_REFRESH',
 }

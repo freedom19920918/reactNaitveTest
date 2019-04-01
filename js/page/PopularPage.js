@@ -1,19 +1,15 @@
 import React, {Component} from 'react';
 import {Text, View, StyleSheet} from 'react-native';
 import {connect} from 'react-redux';
-import {createMaterialTopTabNavigator, createAppContainer} from 'react-navigation';
+import { createAppContainer} from 'react-navigation';
+import {createMaterialTopTabNavigator} from 'react-navigation-tabs';
 import NavigationUtil from '../navigator/NavigationUtil';
-import commonStyle from '../commonStyle';
 
 const mapStateTopProps = (state, ownProps) => {
     return {
         nav: state.nav,
     }
 };
-/*
-const mapDispatchTopProps = (dispatch) => {
-};
-*/
 
 @connect(mapStateTopProps)
 export default class PopularPage extends Component {
@@ -30,10 +26,9 @@ export default class PopularPage extends Component {
                 screen: props => <PopularTab {...props} tabLabel={item}/>,
                 navigationOptions: {
                     title: item,
-                    tabBarOnPress:({navigation,defaultHandler})=>{
+          /*          tabBarOnPress:({navigation,defaultHandler})=>{
                         defaultHandler();
-                        console.warn(111,navigation)
-                    },
+                    },*/
                 },
 
             }

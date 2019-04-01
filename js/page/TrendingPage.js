@@ -8,7 +8,7 @@ const mapStateToProps = (state, ownProps) => ({});
 
 const mapDispatchToProps = (dispatch) => ({
     onThemeChange: (theme) => {
-        dispatch(actions.onThemeChange(theme))
+        return dispatch(actions.onThemeChange(theme))
     },
 });
 @connect(mapStateToProps, mapDispatchToProps)
@@ -21,7 +21,8 @@ export default class TrendingPage extends Component {
                 <Button
                     title="改变主题色"
                     onPress={() => {
-                        this.props.onThemeChange('orange');
+                        const res = this.props.onThemeChange('orange');
+                        console.warn('this.props.onThemeChange(\'orange\')', res);
                     }}
                 />
             </View>
