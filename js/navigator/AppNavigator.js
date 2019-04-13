@@ -60,7 +60,6 @@ const AppWithNavigationState = createReduxContainer(RootNavigator, 'root');
  * @param state
  */
 const mapStateToProps = state => {
-    console.log('state', state);
     return {
         state: state.nav,//v2
     }

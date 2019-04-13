@@ -66,7 +66,6 @@ export default class HomePage extends Component {
 
     onBackPress = () => {
         const {dispatch, nav} = this.props;
-        console.log('nav',nav)
         if (nav.routes[1].index === 0) {//如果是main路由中的第一个页面，则什么也不做
             return false;
         } else {

@@ -3,6 +3,7 @@ import {Provider} from 'react-redux';
 import AppNavigator from './navigator/AppNavigator';
 import store from './store'
 
+console.disableYellowBox = true;
 type Props = {};
 export default class App extends Component<Props> {
     render() {
