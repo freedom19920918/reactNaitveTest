@@ -136,10 +136,6 @@ class TrendingTab extends Component {
         this.timeSpan = props.timeSpan;
     }
 
-    static getDerivedStateFromProps(nextProps, prevState) {
-        console.log('nextProps', nextProps);
-    };
-
     componentDidMount(): void {
         this.loadData();
         this.timeSpanChangeLitener = DeviceEventEmitter.addListener(EVENT_TYPE_TIME_SPAN_CHANGE, (timeSpan) => {
@@ -221,13 +217,13 @@ class TrendingTab extends Component {
                           ListFooterComponent={() => this.genIndicator()}
                           onEndReached={() => {
                               console.log('---onEndReached----');
-                              this.loadData(true);
-                              /*        setTimeout(() => {
-                                          if (this.canLoadMore) {//fix 滚动时两次调用onEndReached https://github.com/facebook/react-native/issues/14015
-                                              this.loadData(true);
-                                              this.canLoadMore = false;
-                                          }
-                                      }, 300);*/
+                              // this.loadData(true);
+                              setTimeout(() => {
+                                  if (this.canLoadMore) {//fix 滚动时两次调用onEndReached https://github.com/facebook/react-native/issues/14015
+                                      this.loadData(true);
+                                      this.canLoadMore = false;
+                                  }
+                              }, 300);
                           }}
                           onEndReachedThreshold={0.3}
                           onMomentumScrollBegin={() => {
